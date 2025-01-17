@@ -1,0 +1,432 @@
+body {
+  font-family: "Helvetica Neue", "Arial", "Roboto", "Open Sans", "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* 浅色渐变背景 */
+  color: #212121;
+  transition: background-color 0.3s ease; /* 添加过渡效果 */
+}
+
+/* 深色模式 */
+body.dark-mode {
+  --primary-color: #61afef;
+  --hover-color: rgba(97, 175, 239, 0.2);
+  --active-color: rgba(97, 175, 239, 0.3);
+  --active-text-color: var(--primary-color);
+  --border-color: #424242;
+  --text-color: #d9d9d9;
+  --background-color: #282c34;
+  --secondary-text-color: #999;
+  background: linear-gradient(135deg, var(--background-color) 0%, #21252b 100%); /* 优化后的渐变背景 */
+  color: var(--text-color);
+}
+
+body.dark-mode .bookmark-li {
+  background-color: #333842;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.554), inset 0 1px 3px rgba(0, 0, 0, 0.5); /* 优化后的外发光效果 */
+}
+
+body.dark-mode .bookmark-li:hover {
+  box-shadow: 0 2px 8px rgba(97, 175, 239, 0.4), inset 0 1px 3px rgba(0, 0, 0, 0.5); /* 优化后的悬停外发光效果 */
+}
+
+body.dark-mode .bookmark-li.selected {
+  background-color: #3e4452;
+}
+
+body.dark-mode .bookmark-li a {
+  color: #f8f8f8;
+}
+
+body.dark-mode .toolbar button:hover {
+  background-color: var(--hover-color);
+}
+
+body.dark-mode #search-input {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #f8f8f8;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select {
+  background-color: #3e4452;
+  color: #f8f8f8;
+  border-color: #f8f8f8;
+}
+
+/* header 样式 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.left-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.left-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.left-links a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .left-links a:hover {
+  background-color: var(--hover-color);
+}
+
+/* 工具栏样式 */
+.toolbar {
+  display: flex;
+  gap: 10px;
+}
+
+.toolbar button {
+  background: none;
+  border: none;
+  padding: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: var(--text-color);
+}
+
+.toolbar button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .toolbar button:hover {
+  background-color: var(--hover-color);
+}
+
+#search-container {
+  margin-bottom: 20px;
+}
+
+#search-input {
+  width: 100%;
+  padding: 10px;
+  border: none; /* 移除边框 */
+  border-radius: 25px; /* 更大的圆角 */
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+  color: #212121; /* 深色文字 */
+  backdrop-filter: blur(10px); /* 毛玻璃效果 */
+  -webkit-backdrop-filter: blur(10px); /* 兼容性处理 */
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode #search-input {
+  background-color: rgba(0, 0, 0, 0.6); /* 深色模式下，搜索框背景色更深 */
+  color: #f8f8f8; /* 深色模式下，搜索框文字颜色更浅 */
+}
+
+.main-content{
+  display: flex;
+  flex-direction: column;
+}
+
+#bookmark-list {
+  margin-top: 10px;
+}
+
+.bookmark-ul {
+  list-style: none;
+  padding-left: 0; /* 移除默认的缩进 */
+}
+
+.bookmark-li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  border-radius: 8px; /* 圆角 */
+  padding: 10px;
+  background-color: #fff; /* 白色卡片 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 卡片阴影 */
+  transition: box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.bookmark-li:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* 悬停时加深阴影 */
+}
+
+.bookmark-li.selected {
+  background-color: #e8eaf6; /* 选中状态的背景色 */
+}
+
+.bookmark-li.folder {
+  font-weight: 600;
+}
+
+.folder-icon {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+.folder-title {
+  font-size: 17px;
+  margin-left: 5px;
+}
+
+.edit-icon {
+  float: right;
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-left: 8px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.edit-icon:hover {
+  opacity: 1;
+}
+
+.bookmark-li a {
+  color: #0366d6; /* 明亮的蓝色 */
+  text-decoration: none;
+  font-size: 16px;
+  flex-grow: 1;
+  display: inline-block; /* 限制宽度 */
+}
+
+.rename-input {
+  width: 100%;
+  padding: 8px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+/* 隐藏未展开的文件夹的子列表 */
+.bookmark-li.folder:not(.expanded) > .bookmark-ul {
+  display: none;
+}
+
+/* 图标 */
+.favicon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+
+/* 拖拽样式 */
+.bookmark-li.dragging {
+  opacity: 0.5;
+  /* transition: transform 0.2s ease; */
+}
+
+.bookmark-li.drag-over {
+  border: 2px dashed var(--primary-color);
+}
+
+.bookmark-li.drag-over-top {
+  border-top: 3px solid var(--primary-color);
+}
+
+.bookmark-li.drag-over-bottom {
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.placeholder {
+  height: 39px;
+  background-color: rgba(0, 123, 255, 0.1);
+  border: 2px dashed rgba(0, 123, 255, 0.5);
+  list-style: none;
+  margin-bottom: 5px;
+}
+
+.drag-over-folder {
+  background-color: rgba(0, 123, 255, 0.2);
+}
+
+/* 深色模式下的拖拽样式 */
+body.dark-mode .bookmark-li.drag-over {
+  border-color: var(--hover-color);
+}
+
+body.dark-mode .bookmark-li.drag-over-top {
+  border-top-color: var(--hover-color);
+}
+
+body.dark-mode .bookmark-li.drag-over-bottom {
+  border-bottom-color: var(--hover-color);
+}
+
+body.dark-mode .placeholder {
+  background-color: rgba(97, 175, 239, 0.2);
+  border: 2px dashed rgba(97, 175, 239, 0.5);
+}
+
+body.dark-mode .drag-over-folder {
+  background-color: rgba(97, 175, 239, 0.3);
+}
+
+/* 对话框样式 */
+.dialog {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog.show {
+    display: flex;
+}
+
+.dialog-content {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    backdrop-filter: blur(10px); /* 毛玻璃效果 */
+    -webkit-backdrop-filter: blur(10px); /* 兼容性处理 */
+}
+
+.dark-mode .dialog-content {
+    background-color: #3e4452;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.dark-mode .form-group input,
+.dark-mode .form-group select {
+    background-color: #3e4452;
+    color: #f8f8f8;
+    border-color: #f8f8f8;
+}
+
+.dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.dialog-buttons button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dialog-buttons .primary {
+    background-color: #0366d6;
+    color: #fff;
+}
+
+body.dark-mode .dialog-buttons .primary {
+  background-color: var(--primary-color);
+}
+
+/* 响应式设计 */
+/* 当屏幕宽度小于 768px */
+@media (max-width: 768px) {
+  .bookmark-li {
+    margin-bottom: 5px;
+  }
+
+  .folder-title {
+    font-size: 16px;
+  }
+
+  /* 工具栏换行 */
+  .toolbar {
+    flex-wrap: wrap;
+  }
+
+  .toolbar button {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .left-links {
+    margin-bottom: 10px;
+    width: 100%;
+    justify-content: space-around;
+  }
+}
+
+/* 当屏幕宽度小于 500px */
+@media (max-width: 500px) {
+    #search-input {
+        width: 95%;
+        font-size: 14px;
+    }
+
+    .bookmark-li {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .bookmark-li a {
+        font-size: 14px;
+    }
+
+    .folder-title {
+        font-size: 15px;
+    }
+
+    .edit-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .dialog-content {
+        width: 90%;
+    }
+}

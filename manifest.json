@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "简易书签管理器",
+  "version": "1.0.2",
+  "description": "一个简约而强大的书签管理工具。",
+  "action": {
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    },
+    "default_title": "打开书签管理器"
+  },
+  "permissions": [
+    "bookmarks",
+    "storage",
+    "favicon",
+    "activeTab"
+  ],
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [ "images/*.png" ],
+      "matches": [ "<all_urls>" ]
+    }
+  ]
+}
